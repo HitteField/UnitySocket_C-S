@@ -4,6 +4,8 @@
 
 NetManager提供了AddEventListener()和AddMsgListener()两个方法，可以提供网络事件和网络消息到来时的监听
 
+请务必在调用NetManager.Connect()连接服务器之前设置完这些监听
+
 #### 比如：
 在某个脚本里写好了处理连接成功网络事件的回调函数public void OnConnectSucc(string err) 
 
