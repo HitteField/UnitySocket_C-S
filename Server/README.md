@@ -1,5 +1,17 @@
-### Server
+# Server
 
-需要在Main方法里调用NetManager.StartLoop()，参数是监听的端口
+服务端是一个控制台程序，请创建一个新的Csharp项目然后将代码导入进项目中。
 
-MsgHandler类是partical的，方便分类定义不同的协议
+核心类位于**net/NetManager.cs**中，定义了几乎所有的套接字的操作，包括多路复用监听，接收客户端连接请求，接收与转发消息等。
+
+启动时，请务必在`Main(string[] args)`方法里调用`NetManager.StartLoop(int)`，参数是监听的端口。
+
+### 备注
+
+`MsgHandler`类是partical的，方便将不同类别的协议的处理方法归类管理。
+
+所有的自定义协议请务必继承自类`MsgBase`，**proto**目录下有一些已经写好的协议供参考。
+
+自定义协议的声明与定义请务必保证服务端与客户端相同。
+
+**tools**目录下有一些工具类，但是定时器类`Clocker`在目录**net**下，这个类是用于完成一些定时任务的（周期性任务/一次性延时任务）
