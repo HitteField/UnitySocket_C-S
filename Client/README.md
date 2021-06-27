@@ -1,6 +1,6 @@
 # Client
 
-**需要在某个Unity脚本的`Update()`方法里调用`NetManager.Update()`**
+<font color=red> ★需要在某个Unity脚本的`Update()`方法里调用`NetManager.Update()` </font>
 
 ___
 
@@ -15,7 +15,7 @@ ___
 请务必在调用`NetManager.Connect()`连接服务器之前设置完这些监听。
 
 请注意网络事件监听委托与网络消息监听委托的区别：
-```
+```C#
   //网络事件监听者
   public delegate void EventListener(string err);
   //网络消息监听者
@@ -29,9 +29,12 @@ ___
 
 那么就需要在此脚本的`Start()`方法里写这么两行代码：
 
-` NetManager.AddEventListener(NetManager.NetEvent.ConnectSucc, OnConnectSucc);`
+```C#
 
-` NetManager.AddMsgListener("MsgKick", OnMsgkick);`
+  NetManager.AddEventListener(NetManager.NetEvent.ConnectSucc, OnConnectSucc);
+  NetManager.AddMsgListener("MsgKick", OnMsgkick);
+
+```
 
 在完成了上述对消息与事件到来时的监听后，调用`NetManager.Connect()`方法连接服务器。
 
@@ -39,7 +42,7 @@ ___
 
 比如在游戏中按下了登录按钮后，按下此按钮的事件回调函数就应该写成类似于这个样子：（请区别这里的C#事件与上述的网络事件）
 
-```
+```C#
 public void OnPressLoginButton()
 {
   ...
